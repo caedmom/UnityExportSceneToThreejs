@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>TextMobile</title>
+    <script type="text/javascript" src="three.min.js"></script>
+	<!--<script type="text/javascript" src="../libs/OrbitControls.js"></script>-->
+    <!--<script type="text/javascript" src="../libs/OBJLoader.js"></script>-->
+	<script type="text/javascript" src="ObjectLoader.js"></script>
+	<!--<script src="https://aframe.io/releases/latest/aframe.min.js"></script>-->
+
+
+
+    <script type="text/javascript" src="stats.js"></script>
+    <script type="text/javascript" src="dat.gui.js"></script>
+    <style>
+        body {
+            /* set margin to 0 and overflow to hidden, to go fullscreen */
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="Stats-output">
+</div>
+<!-- Div which will hold the Output -->
+<div id="WebGL-output">
+</div>
+
+<!-- Javascript code that runs our Three.js examples -->
+<script type="text/javascript">
+
+    // once everything is loaded, we run our Three.js stuff.
+    function init() {
+
+        var stats = initStats();
+
+        // create a scene, that will hold all our elements such as objects, cameras and lights.
+        var scene = new THREE.Scene();
+
+        // create a camera, which defines where we're looking at.
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        // create a render and set the size
+        var webGLRenderer = new THREE.WebGLRenderer();
+        webGLRenderer.setClearColor(new THREE.Color("rgb(200,200,255)"));
+        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        webGLRenderer.shadowMapEnabled = true;
+
+        // position and point the camera to the center of the scene
+        camera.position.x = 150;
+        camera.position.y = 50;
+        camera.position.z = 60;
+        camera.lookAt(scene.position);
+        scene.add(camera);
+
+        // add spotlight for the shadows
+        var spotLight = new THREE.DirectionalLight(0xaaaaff);
+        spotLight.position.set(30, 40, 50);
+        spotLight.intensity = 1;
+        scene.add(spotLight);
+
+        // add the output of the renderer to the html element
+        document.getElementById("WebGL-output").appendChild(webGLRenderer.domElement);
+
+        // call the render function
+        var step = 0;
+
+
+        // setup the control gui
+        var controls = new function () {
+            // we need the first child, since it's a multimaterial
+
+
+        };
+
+        var gui = new dat.GUI();
+        var mesh;
+		
+		/*
+		//load a image as background
+		// instantiate a loader
+		var loader = new THREE.ImageLoader();
+
+		// load a image resource
+		loader.load(
+			// resource URL
+			'../assets/textures/cameraBG.png',
+			// Function when resource is loaded
+			function ( image ) {
+				// do something with it
+
+				// like drawing a part of it on a canvas
+				var canvas = document.createElement( 'canvas' );
+				var context = canvas.getContext( '2d' );
+				context.drawImage( image, 100, 100 );
+			},
+			// Function called when download progresses
+			function ( xhr ) {
+				console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+			},
+			// Function called when download errors
+			function ( xhr ) {
+				console.log( 'An error happened' );
+			}
+		);
+		*/
+		
+		/*
+		var myObject = new THREE.Mesh( geometry, materialAll );
+		
+		
+		if(gameObject.name==="cameraBG")
+		{
+			camera.add(myObject);
+		}
+		*/
+		
+		//below these,i have tested many way to find a corret function to load my json file,eventually
+		//i found the ObjectLoader,it receives json to obj ,then turn it to mesh .
+		/*
+		// instantiate a loader
+		var loader = new THREE.OBJLoader();
+
+		// load a resource
+		loader.load(
+			// resource URL
+			'../assets/models/scene.json',
+			// Function when resource is loaded
+			function ( object ) {
+				scene.add( object );
+			}
+		);
+		*/
+		
+		/*
+		console.log( 'begin load the json file' );
+		// instantiate a loader
+		var loader = new THREE.ObjectLoader();
+		
+		loader.load('../assets/models/scene.json',
+			function(object){
+				// assuming we loaded a JSON structure from elsewhere
+				var object = loader.parse(object);
+				console.log( 'json loaded' );
+				scene.add( object ); 
+			}
+		)
+		*/
+		console.log( 'begin load the json file' );
+			loader = new THREE.ObjectLoader();
+
+			loader.load('scene.json', function (obj) {
+						mesh = obj;
+						scene.add(mesh);
+			})
+		console.log( 'json loaded' );
+		
+		/*
+		var loader = new THREE.OBJLoader();
+		loader.load("../assets/models/scene.json",
+        function (obj) {
+            var material = new THREE.MeshLambertMaterial({
+                      map: THREE.ImageUtils.loadTexture("../assets/models/images/blue_christmas_by_kahookashii-d4jz91b.jpg")});
+            var mesh = new THREE.Mesh(obj.geometry, material);
+            scene.add(mesh);
+			}
+		);
+		*/
+		
+		console.log( 'begin render' );
+        render();
+
+
+        function render() {
+            stats.update();
+
+            if (mesh) {
+                //mesh.rotation.y += 0.006;
+                //mesh.rotation.x += 0.006;
+				mesh.rotation.y+=0.006;
+            }
+
+
+            // render using requestAnimationFrame
+            requestAnimationFrame(render);
+            webGLRenderer.render(scene, camera);
+        }
+
+        function initStats() {
+
+            var stats = new Stats();
+            stats.setMode(0); // 0: fps, 1: ms
+
+            // Align top-left
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.left = '0px';
+            stats.domElement.style.top = '0px';
+
+            document.getElementById("Stats-output").appendChild(stats.domElement);
+
+            return stats;
+        }
+    }
+    window.onload = init;
+</script>
+</body>
+</html>

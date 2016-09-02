@@ -1,0 +1,199 @@
+
+{
+  "metadata" : {
+    "version" : 1.0,
+    "type"    : "Object",
+    "generator" : "Kanau"
+  },
+  "geometries" : [
+    {
+      "uuid" : "12A808A8-9FBD-4E14-9304-42A440334AB7",
+      "type" : "PlaneBufferGeometry",
+      "width" : 1.0,
+      "height" : 1.0
+    }
+  ],
+  "materials"  : [
+    {
+      "uuid" : "88240805-5DD7-44CA-BE90-94F3E8E8A0F4",
+      "name" : "heart",
+      "type" : "MeshStandardMaterial",
+      "metalness" : 0.0,
+      "map"       : "641D7B5C-B73F-42C8-8C6B-84616D32DD75",
+      "bumpScale" : 0.100000001490116,
+      "normalScale" : [
+        0.100000001490116,
+        0.100000001490116
+      ],
+      "displacementScale" : 0.0199999995529652
+    }
+  ],
+  "object"     : {
+    "uuid" : "06A73F45-DD95-454D-977E-3D25D0A196A9",
+    "type" : "Scene",
+    "name" : "KanauScene",
+    "matrix" : [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "visible" : true,
+    "children" : [
+      {
+        "uuid" : "0A91704C-D804-47AD-9336-B09E64A716B9",
+        "type" : "PerspectiveCamera",
+        "name" : "Main Camera",
+        "matrix" : [
+          0.99996942281723,
+          3.76562820747495E-06,
+          -0.00782326515763998,
+          0.0,
+          -0.000547971634659916,
+          0.997577488422394,
+          -0.0695615485310555,
+          0.0,
+          0.00780405150726438,
+          0.0695637091994286,
+          0.997546970844269,
+          0.0,
+          -0.784857749938965,
+          12.1151027679443,
+          202.871002197266,
+          1.0
+        ],
+        "visible" : true,
+        "userData" : {
+          "tag" : "MainCamera",
+          "isStatic" : false
+        },
+        "fov"      : 60.0,
+        "zoom"     : 1,
+        "near"     : 0.300000011920929,
+        "far"      : 1000.0,
+        "focus"    : 10,
+        "aspect"   : 1,
+        "filmGauge" : 35,
+        "filmOffset" : 0
+      },
+      {
+        "uuid" : "37316B3B-85EE-46AB-B3F9-BCAACA533BBD",
+        "type" : "DirectionalLight",
+        "name" : "Directional Light",
+        "matrix" : [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.32139378786087,
+          0.766044497489929,
+          0.556670308113098,
+          1.0
+        ],
+        "visible" : true,
+        "color"   : 16774358,
+        "intensity" : 1.0
+      },
+      {
+        "uuid" : "3F9C96FA-CE95-48EA-A5BA-339F0F6DBC86",
+        "type" : "Mesh",
+        "name" : "Quad",
+        "matrix" : [
+          100.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          -1.11186361312866,
+          30.2999992370605,
+          0.10603141784668,
+          1.0
+        ],
+        "visible" : true,
+        "geometry" : "12A808A8-9FBD-4E14-9304-42A440334AB7",
+        "material" : "88240805-5DD7-44CA-BE90-94F3E8E8A0F4"
+      },
+      {
+        "uuid" : "6B4F7864-DB52-46C5-A3D1-2ADE6131B14C",
+        "type" : "AmbientLight",
+        "name" : "AmbientLight",
+        "matrix" : [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "visible" : true,
+        "color"   : 3553602
+      }
+    ]
+  },
+  "images"     : [
+    {
+      "url" : "./images/heart.jpg",
+      "uuid" : "B4E33FAA-EC09-4F2C-8C06-A6866AE14F84",
+      "name" : "heart.jpg"
+    }
+  ],
+  "textures"   : [
+    {
+      "uuid" : "641D7B5C-B73F-42C8-8C6B-84616D32DD75",
+      "offset" : [
+        0.0,
+        0.0
+      ],
+      "repeat" : [
+        1.0,
+        1.0
+      ],
+      "magFilter" : 1006,
+      "minFilter" : 1008,
+      "wrap"      : [
+        1000,
+        1000
+      ],
+      "image"     : "B4E33FAA-EC09-4F2C-8C06-A6866AE14F84",
+      "name"      : "./images/heart.jpg",
+      "anisotropy" : 1
+    }
+  ]
+}
